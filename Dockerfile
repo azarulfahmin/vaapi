@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install vainfo && \
-    apt-get install ssh && \
+    apt-get install vainfo -y && \
+    apt-get install ssh -y && \
     systemctl ssh start && \
     systemctl ssh enable
 
