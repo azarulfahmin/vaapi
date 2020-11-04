@@ -13,6 +13,9 @@ RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid
 
 ENV NOTVISIBLE="in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
-RUN vainfo > ~/result.txt
+RUN export GST_VAAPI_ALL_DRIVERS=1
+RUN export LIBVA_DRIVER_NAME=iHD
+RUN export LIBVA_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri
+RUN gst-inspect-1.0 vaapi
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
