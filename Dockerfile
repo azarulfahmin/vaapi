@@ -6,6 +6,6 @@ RUN apt-get update && \
     systemctl ssh start && \
     systemctl ssh enable
 
-EXPOSE 6379
+EXPOSE 22
 
 CMD vainfo > ~/result.txt
