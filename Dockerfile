@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y openssh-server
+RUN apt-get install -y mesa-va-drivers
 RUN apt-get install -y vainfo
 RUN mkdir /var/run/sshd
 RUN echo 'root:Intel123!' | chpasswd
