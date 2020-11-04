@@ -16,6 +16,6 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN export GST_VAAPI_ALL_DRIVERS=1
 RUN export LIBVA_DRIVER_NAME=iHD
 RUN export LIBVA_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri
-RUN gst-inspect-1.0 vaapi
+RUN vainfo
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
