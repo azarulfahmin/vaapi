@@ -32,6 +32,8 @@ RUN ls
 RUN ./ffmpeg-4.0.2/configure --enable-gpl --enable-libmp3lame --enable-decoder=mjpeg,png --enable-encoder=png
 RUN make
 RUN make install
-RUN ffmpeg
+WORKDIR /video
+RUN ffmpeg -i RW20seconds_2.mp4 -ss 00:00:50.0 -codec copy -t 20 output.mp4
+RUN ls
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
