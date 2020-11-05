@@ -4,7 +4,10 @@ RUN apt-get update && apt-get install -y openssh-server
 RUN apt-get install -y mesa-va-drivers
 RUN apt-get install -y libdrm-dev
 RUN apt-get install -y vainfo
-RUN apt-get install -y git build-essential gcc make yasm autoconf automake cmake libtool checkinstall wget software-properties-common pkg-config libmp3lame-dev libunwind-dev zlib1g-dev
+RUN apt-get install -y git build-essential gcc make yasm autoconf automake cmake libtool checkinstall wget software-properties-common pkg-config libmp3lame-dev libunwind-dev zlib1g-dev libssl-dev
+RUN apt-get update \
+    && apt-get clean \
+    && apt-get install -y --no-install-recommends libc6-dev libgdiplus wget software-properties-common
 RUN mkdir /var/run/sshd
 RUN echo 'root:Intel123!' | chpasswd
 RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
