@@ -9,6 +9,10 @@ RUN apt-get update \
     && apt-get clean \
     && apt-get install -y --no-install-recommends libc6-dev libgdiplus wget software-properties-common
 RUN mkdir /var/run/sshd
+RUN mkdir /video
+ADD RW20seconds_2.mp4 /video
+WORKDIR /video
+RUN pwd
 RUN echo 'root:Intel123!' | chpasswd
 RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
